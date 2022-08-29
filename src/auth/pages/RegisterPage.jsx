@@ -3,6 +3,7 @@ import {Link as RouterLink} from 'react-router-dom'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { AuthLayout } from '../layout/AuthLayout'
+import { Google } from "@mui/icons-material";
 
 export const RegisterPage = () => {
   return (
@@ -39,6 +40,7 @@ export const RegisterPage = () => {
           spacing={1}
           sx={{mb:2, mt:1}}
           >
+             <Grid item xs={12} sx={{ mt: 2 }}>
             <Button
             variant='contained'
             fullWidth
@@ -46,7 +48,7 @@ export const RegisterPage = () => {
 
               <Typography sx={{ml:1}}>Crear Cuenta</Typography>
             </Button>
-
+            </Grid>
           </Grid>
             <Grid container direction='row' justifyContent='end'>
                 <Link
@@ -57,7 +59,6 @@ export const RegisterPage = () => {
                 Ya tengo una cuenta
                 </Link>
               </Grid>
-
         </form>
 </AuthLayout>
   )

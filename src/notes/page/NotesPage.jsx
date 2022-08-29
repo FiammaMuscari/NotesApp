@@ -1,13 +1,28 @@
-import { Typography } from '@mui/material'
+import { AddOutlined } from '@mui/icons-material'
+import { IconButton, Typography } from '@mui/material'
 import React from 'react'
 import { NotesLayout } from '../layout/NotesLayout'
+import { NoteView, NothingSelectedView } from '../views'
 
 export const NotesPage = () => {
   return (
-    <NotesLayout>
-    <Typography>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit cum mollitia minus nobis nam odio laboriosam ad, ex inventore amet, dolorem laborum iure nulla reiciendis consequatur ab consequuntur! Voluptates, possimus!
-    </Typography>
+    <NotesLayout>      
+      <NothingSelectedView />
+      <NoteView />
+
+      <IconButton
+        size='large'
+        sx={{
+          color: '#fff',
+          backgroundColor: 'error.main',
+          ':hover': { backgroundColor: 'error.main', opacity: 0.9 },
+          position: 'fixed',
+          right: 50,
+          bottom: 50
+        }}
+      >
+        <AddOutlined sx={{ fontSize: 30 }} />    
+      </IconButton>
     </NotesLayout>
   )
 }
