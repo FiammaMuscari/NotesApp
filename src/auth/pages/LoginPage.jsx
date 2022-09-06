@@ -1,31 +1,38 @@
-import {Link as RouterLink} from 'react-router-dom'
+import { Link as RouterLink } from "react-router-dom";
+
+import { AuthLayout } from "../layout/AuthLayout";
+
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
-import React, { useMemo } from "react";
-import {Google} from "@mui/icons-material";
-import { AuthLayout } from '../layout/AuthLayout';
+
+import { Google } from "@mui/icons-material";
 import { useForm } from "../../hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { checkingAuthentication, startGoogleSignIn } from '../../notes/store/auth/thunks';
+import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth/thunks";
+import { useMemo } from "react";
+
+
+// Tarea: En el componente LoginPage.jsx, utilizar el estado del store de redux y hacer la siguiente validación:
+// Si el valor del state.status es igual a "checking" deshabilitar los botones de login y google.
+// Para esto previamente guardar el resultado booleano de esa condición, en una constante llamada isChecking, utilizando useMemo.
+
 
 export const LoginPage = () => {
 
-
-  const { status } = useSelector( state => state.auth);
-  const isCheking = useMemo( () => status === 'checking', [status]);
-
   const dispatch = useDispatch();
 
-  const { email, password, onInputChange } = useForm({
-    email: 'fiammamuscari@gmail.com',
-    password: '123456'
-  })
+  const { status } = useSelector((state)=> state.auth);
 
- 
+  const isChecking = useMemo(() => status === 'checking', [status])
+
+  const { email, password, onInputChange } = useForm({
+    email: '',
+    password: ''
+  })
 
   const onSubmit = (event) => {
     event.preventDefault();
-    // console.log({email, password});
-    dispatch(checkingAuthentication());
+    console.log({email, password});
+    dispatch(startLoginWithEmailPassword({email, password}));
   }
 
   const onGoogleSignIn = ()=>{
@@ -35,7 +42,7 @@ export const LoginPage = () => {
   }
 
   return (
-    <AuthLayout title='Login'>
+    <AuthLayout title='Login'>    
         <form onSubmit={onSubmit}>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
@@ -59,51 +66,35 @@ export const LoginPage = () => {
               onChange={onInputChange}
             />
           </Grid>
-          <Grid
-          container
-          spacing={1}
-          sx={{mb:2, mt:1}}
-          >
+          <Grid container spacing={1} sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={12} sx={{ mt: 2 }}>
-            <Button
-            variant='contained'
-            fullWidth
-            disabled={isCheking}
-            >
-
-              <Typography sx={{ml:1}}>Login</Typography>
-            </Button>
+              <Button 
+                variant="contained" 
+                fullWidth
+                type='submit'
+                disabled={isChecking}
+                >
+                <Typography sx={{ ml: 1 }}>Login</Typography>
+              </Button>
+            </Grid>
+            <Grid item xs={12} sx={{ mt: 2 }}>
+              <Button
+                variant="contained" 
+                fullWidth
+                onClick={onGoogleSignIn}
+                disabled={isChecking}
+              >
+                <Google />
+                <Typography sx={{ ml: 1 }}>Google</Typography>
+              </Button>
             </Grid>
           </Grid>
-          <Grid
-          container
-          spacing={1}
-          sx={{mb:2, mt:1}}
-          >
-            <Button
-            variant='contained'
-            fullWidth
-            onClick={onGoogleSignIn}
-            disabled={isCheking}
-            >
-              <Google/>
-              <Typography sx={{ml:1}}>Google</Typography>
-            </Button>
-
-
-              <Grid container direction='row' justifyContent='end'>
-                <Link
-                component={RouterLink}
-
-                to='/auth/register'
-                >
-                Crear una cuenta
-                </Link>
-              </Grid>
-
+          <Grid container direction="row" justifyContent="end">
+            <Link component={RouterLink} color="inherit" to="/auth/register">
+              Crear una cuenta
+            </Link>
           </Grid>
-
         </form>
-    </AuthLayout>
+      </AuthLayout>
   );
 };
