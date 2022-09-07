@@ -12,7 +12,9 @@ import { useMemo } from "react";
 
 
 // Tarea: En el componente LoginPage.jsx, utilizar el estado del store de redux y hacer la siguiente validación:
+
 // Si el valor del state.status es igual a "checking" deshabilitar los botones de login y google.
+
 // Para esto previamente guardar el resultado booleano de esa condición, en una constante llamada isChecking, utilizando useMemo.
 
 

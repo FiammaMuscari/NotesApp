@@ -1,8 +1,10 @@
-import { AddOutlined } from '@mui/icons-material'
-import { IconButton, Typography } from '@mui/material'
+import { AddOutlined } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 import React from 'react'
-import { NotesLayout } from '../layout/NotesLayout'
-import { NoteView, NothingSelectedView } from '../views'
+
+import { NotesLayout } from '../layout/NotesLayout';
+import { NoteView, NothingSelectedView } from '../views';
+
 
 export const NotesPage = () => {
   return (
