@@ -6,7 +6,7 @@ import { Navbar, SideBar } from '../components'
 const drawerWidth = 240
 export const NotesLayout = ({children}) => {
   return (
-    <Box sx={{display:'flex'}}>
+    <Box sx={{display:'flex'}} className='animate__animated animate__fadeIn animate__faster'>
 
        <Navbar drawerWidth={drawerWidth}/>
         {/*Sidebar*/}
