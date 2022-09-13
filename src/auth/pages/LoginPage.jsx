@@ -17,6 +17,10 @@ import { useMemo } from "react";
 
 // Para esto previamente guardar el resultado booleano de esa condición, en una constante llamada isChecking, utilizando useMemo.
 
+const initialForm = {
+  email: '',
+  password: ''
+}
 
 export const LoginPage = () => {
 
@@ -26,10 +30,7 @@ export const LoginPage = () => {
 
   const isChecking = useMemo(() => status === 'checking', [status])
 
-  const { email, password, onInputChange } = useForm({
-    email: '',
-    password: ''
-  })
+  const { email, password, onInputChange } = useForm(initialForm)
 
   const onSubmit = (event) => {
     event.preventDefault();

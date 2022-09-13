@@ -26,11 +26,19 @@ export const noteSlice = createSlice({
     setActiveNote: (state, {payload}) => {
         state.activeNote = payload;
     },
-    setNotes: (state) => {},
+    setNotes: (state, {payload}) => {
+      state.notes = payload;
+    },
     startSaving: (state) => {
         state.isSaving = true;
     },
-    updateNote: (state) => {},
+    updateNote: (state, {payload}) => {
+      state.notes = state.notes.map( note => {
+        if(note.id === payload.id) return payload;
+        return note
+      })  
+      state.isSaving = false;
+    },
     deleteNoteById: (state) => {},
   },
 });
