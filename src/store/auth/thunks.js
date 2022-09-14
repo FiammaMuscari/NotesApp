@@ -1,7 +1,8 @@
 
-import { async } from "@firebase/util";
-import { loginWithEmailPassword, registerUserWithEmail, signInWithGoogle, logoutFirebase} from "../../firebase/providers";
-import { login, logout, checkingCredentials } from "./authSlice"
+import { loginWithEmailPassword, logoutFirebase, registerUserWithEmail, signInWithGoogle } from "../../firebase/providers";
+import { clearNotesLogout } from "../notes/notesSlice";
+import { checkingCredentials, login, logout } from "./authSlice"
+
 export const checkingAuthentication = (email, password) =>{
     return async (dispatch)=>{
         dispatch(checkingCredentials());
@@ -44,10 +45,11 @@ export const startLoginWithEmailPassword = ({email, password}) => {
     }
 }
 
-
 export const startLogout = () => {
-    return async(dispatch) => {
+    return async (dispatch) => {
+
         await logoutFirebase();
-        dispatch(logout());
+        dispatch( logout() );
+        dispatch(clearNotesLogout());
     }
 }
