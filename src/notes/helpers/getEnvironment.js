@@ -1,6 +1,6 @@
 export const getEnvironment = () =>{
-    import.meta.env.MODE
+    import.meta.env;
     return {
-        ...import.meta.env.MODE
+        ...import.meta.env
     }
 }
