@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore/lite";
 import {getStorage} from 'firebase/storage'
+import { getEnvironment } from "../notes/helpers/getEnvironment";
 // import { getAnalytics } from "firebase/analytics";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -14,19 +15,23 @@ import {getStorage} from 'firebase/storage'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
+const{
+  VITE_APIKEY,
+  VITE_AUTHDOMAIN,
+  VITE_PROJECTID,
+  VITE_STORAGEBUCKET,
+  VITE_MESSAGINGSENDERID,
+  VITE_APPID,
+} = getEnvironment()
+
+
 const firebaseConfig = {
-
-  apiKey: "AIzaSyBI7Fl3NWvS_5wy6BaNw1quKcRI5GytZlk",
-
-  authDomain: "notesapp-d2cb1.firebaseapp.com",
-
-  projectId: "notesapp-d2cb1",
-
-  storageBucket: "notesapp-d2cb1.appspot.com",
-
-  messagingSenderId: "873602921960",
-
-  appId: "1:873602921960:web:80a86797f55432ed8ee05d",
+  apiKey: VITE_APIKEY,
+  authDomain: VITE_AUTHDOMAIN,
+  projectId: VITE_PROJECTID,
+  storageBucket: VITE_STORAGEBUCKET,
+  messagingSenderId: VITE_MESSAGINGSENDERID,
+  appId: VITE_APPID,
 
 //   measurementId: "G-NKK52J4LGV"
 

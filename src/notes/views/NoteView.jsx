@@ -1,14 +1,16 @@
-import { SaveOutlined } from '@mui/icons-material'
-import { Button, Grid, TextField, Typography } from '@mui/material'
-import React from 'react'
+import { DeleteForeverOutlined, SaveOutlined } from '@mui/icons-material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { ImageGalery } from '../components'
+import { ImageGalery } from '../components';
+import { UploadImageButton } from '../components/UploadImageButton';
+
 import { useForm } from '../../hooks/useForm';
 import { useEffect, useMemo } from 'react';
 import { setActiveNote } from '../../store/notes/notesSlice';
-import { startSaveNote } from '../../store/notes/thunks';
-import Swal from 'sweetalert2'
-import { UploadImageButton } from '../components/UploadImageButton';
+import { startDeleteNote, startSaveNote } from '../../store/notes/thunks';
+
+import Swal from 'sweetalert2';
 
 const formValid = {
     title : [
@@ -18,8 +20,9 @@ const formValid = {
         [(value) => value.length > 6, 'El cuerpo debe contener al menos 6 caracteres']
     ]
 }
+
 export const NoteView = () => {
-    
+
     const dispatch = useDispatch()
 
     const { activeNote, isSaving, messageSaved } = useSelector( state => state.note );
@@ -34,9 +37,8 @@ export const NoteView = () => {
         if( messageSaved.length > 0 ){
             Swal.fire('Nota actualizada', messageSaved, 'success');
         }
-    }, [messageSaved]); 
+    }, [messageSaved]);  
     
-
 
     const dateString = useMemo(() => {
         const newDate = new Date( date );
@@ -45,6 +47,10 @@ export const NoteView = () => {
 
     const onSaveNote = () => {
         dispatch( startSaveNote() );
+    }
+
+    const onDeleteNote = () => {
+        dispatch( startDeleteNote() );
     }
 
   return (
@@ -62,18 +68,28 @@ export const NoteView = () => {
             </Typography>            
         </Grid> 
         <Grid item> 
-        <UploadImageButton/>
-            <Button sx={{padding: 2}} disabled={isSaving} onClick={ onSaveNote }>
+            <UploadImageButton />
+            <Button sx={{padding: 2}}
+                onClick={ onSaveNote }
+                disabled={isSaving}
+            >
                 <SaveOutlined sx={{fontSize: 30, mr: 1}} />
                 Guardar
-            </Button>     
+            </Button>  
+            <Button sx={{padding: 2}}
+                onClick={ onDeleteNote }
+                disabled={isSaving}
+            >
+                <DeleteForeverOutlined sx={{fontSize: 30, mr: 1}} />
+                Eliminar Nota
+            </Button>                
         </Grid>
         <Grid container>
             <TextField 
                 type='text'
                 variant='filled'
                 fullWidth
-                placeholder='Ingrese un título'
+                placeholder='Ingrese un titulo'              
                 sx={{ border: 'none', mb: 1 }}
                 name='title'
                 value={title}
@@ -96,7 +112,7 @@ export const NoteView = () => {
             />  
             
         </Grid>
-        <ImageGalery images={activeNote.imagesUrls}/>
+        <ImageGalery images={activeNote.imagesUrls} />
     </Grid>
   )
 }
