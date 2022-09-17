@@ -1,7 +1,7 @@
 import { Box, Toolbar } from '@mui/material'
 import React from 'react'
-import NavBar from '../components/Navbar'
-import SideBar from '../components/SideBar'
+import {NavBar} from '../components/Navbar'
+import {SideBar} from '../components/SideBar'
 
 
 export const NotesLayout = ({children}) => {
