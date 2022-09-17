@@ -2,7 +2,7 @@ import { DeleteForeverOutlined, SaveOutlined } from '@mui/icons-material';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { ImageGalery } from '../components';
+import { ImageGalery } from '../components/ImageGalery';
 import { UploadImagesButton } from '../components/UploadImagesButton';
 
 import { useForm } from '../../hooks/useForm';
