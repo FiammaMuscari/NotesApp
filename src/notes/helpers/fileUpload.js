@@ -14,7 +14,7 @@ export const fileUpload = async (file) => {
 
 
     try {
-
+        
         const uploadTask = await uploadBytes(imgRef, file, metadata);
         const url = await getDownloadURL(uploadTask.ref);
         return {
@@ -23,6 +23,7 @@ export const fileUpload = async (file) => {
         }
 
     } catch (error) {
+        console.error(error);
         throw new Error( error.message );
     }
 

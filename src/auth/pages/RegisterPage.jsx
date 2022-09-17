@@ -8,7 +8,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { startCreatingUserWithEmail } from "../../store/auth/thunks";
 
-
 const formData = {
   email: "",
   password: "",
@@ -66,7 +65,7 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout title="Crear cuenta">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
         <Grid item xs={12} sx={{ mt: 2 }}>
           <TextField
             label="Nombre Completo"

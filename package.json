@@ -1,5 +1,5 @@
 {
-  "name": "notesapp",
+  "name": "notes-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -19,7 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "6",
     "sweetalert2": "^11.4.33"
   },
   "devDependencies": {

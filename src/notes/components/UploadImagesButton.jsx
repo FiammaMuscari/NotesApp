@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startUploadingFiles } from "../../store/notes/thunks";
 
-export const UploadImageButton = () => {
+export const UploadImagesButton = () => {
 
     const fileInputRef = useRef();
 
@@ -14,7 +14,7 @@ export const UploadImageButton = () => {
 
     const onFileInputChange = ({target}) =>{
         if(target.files === 0) return;
-
+        
         dispatch(startUploadingFiles(target.files))
     }
 

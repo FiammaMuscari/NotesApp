@@ -2,8 +2,8 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 export const ImageGalery = ({images = []}) => {
-  
-  
+
+
   return (
     <ImageList sx={{ width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}} cols={4} rowHeight={'auto'}>
       {images.map(({url, path}) => (
@@ -18,4 +18,3 @@ export const ImageGalery = ({images = []}) => {
     </ImageList>
   );
 }
-

@@ -3,7 +3,7 @@ import { Button, Grid, TextField, Typography } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { ImageGalery } from '../components';
-import { UploadImageButton } from '../components/UploadImageButton';
+import { UploadImagesButton } from '../components/UploadImagesButton';
 
 import { useForm } from '../../hooks/useForm';
 import { useEffect, useMemo } from 'react';
@@ -68,7 +68,7 @@ export const NoteView = () => {
             </Typography>            
         </Grid> 
         <Grid item> 
-            <UploadImageButton />
+            <UploadImagesButton />
             <Button sx={{padding: 2}}
                 onClick={ onSaveNote }
                 disabled={isSaving}

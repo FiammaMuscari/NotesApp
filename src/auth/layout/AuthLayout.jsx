@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
-import React from "react";
 
-export const AuthLayout = ({children, title=''}) => {
+
+export const AuthLayout = ({ children, title = '' }) => {
   return (
     <Grid
       container
@@ -17,7 +17,7 @@ export const AuthLayout = ({children, title=''}) => {
         sm={8}
         md={4}
         className="box-shadow"
-        sx={{ backgroundColor: "#fff", padding: 3, borderRadius: 3 }}
+        sx={{ backgroundColor: "#fff", padding: 3, borderRadius: 2 }}
       >
         <Typography variant="h5" sx={{ mb: 1 }}>
           {title}

@@ -7,6 +7,14 @@ const initialState = {
   activeNote: null,
 };
 
+// {
+//     id: 'ABC123',
+//     title: '',
+//     body: '',
+//     date: 123456,
+//     imagesUrl: []
+// }
+
 export const noteSlice = createSlice({
   name: "note",
   initialState,
@@ -44,8 +52,8 @@ export const noteSlice = createSlice({
       state.notes = [];
       state.activeNote = null;
     },
-    deleteNoteById: (state,{payload}) => {
-      state.notes = state.notes.filter(note => note.id !==payload)
+    deleteNoteById: (state, {payload}) => {
+      state.notes = state.notes.filter(note => note.id !== payload);
       state.activeNote = null;
       state.isSaving = false;
     },
@@ -53,14 +61,14 @@ export const noteSlice = createSlice({
 });
 
 export const {
-  setPhotosToActiveNote,
-  clearNotesLogout,
   addNewEmptyNote,
   setActiveNote,
   setNotes,
   startSaving,
   updateNote,
   deleteNoteById,
+  setPhotosToActiveNote,
+  clearNotesLogout,
 } = noteSlice.actions;
 
 export default noteSlice.reducer;

@@ -27,7 +27,7 @@ export const NothingSelectedView = () => {
                 color='#fff' 
                 variant='h5'
             >
-                Selecciona o creá una entrada
+                Selecciona o crea una entrada
             </Typography>
         </Grid>
     </Grid>
